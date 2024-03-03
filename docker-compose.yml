@@ -1,0 +1,18 @@
+version: '3.8'
+
+volumes:
+  postgres_data:
+#    name: bank_db_postgres_data
+
+services:
+  db:
+    build:
+      context: .
+      dockerfile: Dockerfile_db
+    container_name: salary_db
+    restart: always
+    ports:
+      - "5432:5432"
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
